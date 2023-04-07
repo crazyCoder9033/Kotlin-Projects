@@ -65,7 +65,7 @@ class QuoteDisplayActivity : AppCompatActivity() {
 
 
         binding.imgCopy.setOnClickListener {
-            
+
         }
 
 

@@ -27,13 +27,13 @@ class FavAdapter(var FavouriteList: ArrayList<FavouriteShayariDisplay>, var invo
 
         if(FavouriteList[position].fav == 1)
         {
-            holder.imgFav.setImageResource(R.drawable.sss)
+            holder.imgFav.setImageResource(R.drawable.heartttt)
 
 
         }
         else
         {
-            holder.imgFav.setImageResource(R.drawable.heartttt)
+            holder.imgFav.setImageResource(R.drawable.sss)
 
         }
 
