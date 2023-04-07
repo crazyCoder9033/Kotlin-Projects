@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FF5722"
+    android:layout_height="match_parent"
+    tools:context=".fragment2">
+
+    <TextView
+        android:layout_marginTop="@dimen/_250sdp"
+        android:layout_gravity="start"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="#000000"
+        android:text="MENT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>

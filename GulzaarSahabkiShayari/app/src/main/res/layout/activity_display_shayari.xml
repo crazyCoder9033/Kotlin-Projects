@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8EDE3"
+    android:orientation="vertical"
+    tools:context=".DisplayShayariActivity">
+    <LinearLayout
+        android:background="#85586F"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/backarrow"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"/>
+
+            <TextView
+                android:fontFamily="@font/allerta_stencil"
+                android:textAlignment="center"
+                android:id="@+id/txtDisplayTitle"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:text="Display Shayari"
+                android:layout_width="@dimen/_230sdp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/imgFavActivity"
+                android:src="@drawable/aa"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:id="@+id/rcvDisplayShayari"
+        tools:listitem="@layout/shayari_rcv_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

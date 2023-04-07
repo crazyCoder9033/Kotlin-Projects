@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#336487"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+   <LinearLayout
+       android:gravity="center"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+   <ImageView
+        android:src="@drawable/logo"
+       android:layout_width="@dimen/_100sdp"
+       android:layout_height="@dimen/_100sdp"/>
+
+   </LinearLayout>
+
+
+
+</LinearLayout>
