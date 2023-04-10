@@ -166,10 +166,13 @@ fun favAdded(variable: Int, s_id: Int)
     }
 
 
-    fun updatedFavList(variable: Int)
+    fun updatedFavList(variable: Int, favId: Int)
     {
         val update=writableDatabase
-        val updateSql="delete from shayariTable where shayari_id='$variable' "
+        val updateSql="select * from shayariTable where shayari_id='$variable' "
+//        val updateSql="update shayariTable set fav='$variable'where shayari_id='$favId'"
+
         update.execSQL(updateSql)
     }
+
 }

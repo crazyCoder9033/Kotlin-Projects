@@ -1,16 +1,9 @@
 package com.example.gulzaarsahabkishayari
 
-import android.app.Dialog
-import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gulzaarsahabkishayari.databinding.ActivityFavouriteBinding
-import com.example.gulzaarsahabkishayari.databinding.DialogItemBinding
 
 class FavouriteActivity : AppCompatActivity() {
     lateinit var fav:MyDatabase
@@ -47,7 +40,7 @@ class FavouriteActivity : AppCompatActivity() {
        FavouriteList= fav.FavouriteShayari()
         adapter=FavAdapter(FavouriteList){ favId ,sid ->
 
-             fav.updatedFavList(sid)
+             fav.favAdded(favId,sid)
             adapter.updatedList(FavouriteList)
 
         }
@@ -57,8 +50,10 @@ class FavouriteActivity : AppCompatActivity() {
 
 
         binding.imgBack.setOnClickListener {
-            val intent = Intent(this@FavouriteActivity, DashBoardActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this@FavouriteActivity, DashBoardActivity::class.java)
+//            startActivity(intent)
+            onBackPressed()
+
         }
 
 

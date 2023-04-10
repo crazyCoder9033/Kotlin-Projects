@@ -12,6 +12,8 @@ class DisplayShayariActivity : AppCompatActivity() {
     lateinit var binding: ActivityDisplayShayariBinding
     var shayariText=ArrayList<ShayariDisplay>()
     lateinit var display:MyDatabase
+    lateinit var adapter:DisplayShayariAdapter
+    var getId=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityDisplayShayariBinding.inflate(layoutInflater)
@@ -24,10 +26,10 @@ class DisplayShayariActivity : AppCompatActivity() {
         var titleName: String? = intent.getStringExtra("title")
         binding.txtDisplayTitle.text=titleName
 
-        var getId=intent.getIntExtra("id",0)
+         getId=intent.getIntExtra("id",0)
 
-       shayariText= display.displayShayari(getId)
-        var adapter= DisplayShayariAdapter(shayariText,
+//       shayariText= display.displayShayari(getId)
+         adapter= DisplayShayariAdapter(
             {
                 val intent = Intent(this@DisplayShayariActivity, QuoteDisplayActivity::class.java)
                 intent.putExtra("shayari",it.shayari)
@@ -43,20 +45,23 @@ class DisplayShayariActivity : AppCompatActivity() {
         binding.rcvDisplayShayari.layoutManager = manager
         binding.rcvDisplayShayari.adapter = adapter
 
+//        shayariText= display.displayShayari(getId)
+
         binding.imgBack.setOnClickListener {
-            val intent = Intent(this@DisplayShayariActivity, DashBoardActivity::class.java)
-
-            startActivity(intent)
+//
+            onBackPressed()
         }
-
         binding.imgFavActivity.setOnClickListener {
             val intent = Intent(this@DisplayShayariActivity, FavouriteActivity::class.java)
             startActivity(intent)
 
-
         }
+    }
 
-
-
+    override fun onResume() {
+        super.onResume()
+        shayariText= display.displayShayari(getId)
+        adapter.updateFunction(shayariText)
+        Log.e("loggggg", "onResume: "+getId)
     }
 }

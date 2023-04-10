@@ -13,9 +13,9 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gulzaarsahabkishayari.*
 
-class DisplayShayariAdapter(
-    var shayariText: ArrayList<ShayariDisplay>, var un :((ShayariDisplay)-> Unit),var invokeTwo :((Int,Int)-> Unit)
+class DisplayShayariAdapter(var un :((ShayariDisplay)-> Unit),var invokeTwo :((Int,Int)-> Unit)
 ) :RecyclerView.Adapter<DisplayShayariAdapter.MyAdapter>() {
+    var shayariText=ArrayList<ShayariDisplay>()
     class MyAdapter(view : View) : RecyclerView.ViewHolder(view) {
     var txtShayari:TextView=view.findViewById(R.id.txtShayari)
         var loutShayari:LinearLayout=view.findViewById(R.id.loutShayari)
@@ -29,6 +29,7 @@ class DisplayShayariAdapter(
         return v
     }
     override fun onBindViewHolder(holder: MyAdapter, position: Int) {
+
        holder.txtShayari.setText(shayariText[position].shayari)
         Log.e("TAG", "onBindViewHolder: "+shayariText[position].toString() )
 
@@ -70,6 +71,13 @@ class DisplayShayariAdapter(
 
     override fun getItemCount(): Int {
        return shayariText.size
+    }
+
+    fun updateFunction(shayariText: ArrayList<ShayariDisplay>) {
+        this.shayariText=ArrayList()
+        this.shayariText.addAll(shayariText)
+        Log.e("TAG", "updateFunction: "+shayariText.size )
+        notifyDataSetChanged()
     }
 
 

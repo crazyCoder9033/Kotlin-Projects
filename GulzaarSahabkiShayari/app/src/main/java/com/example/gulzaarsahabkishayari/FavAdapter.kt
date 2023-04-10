@@ -25,38 +25,30 @@ class FavAdapter(var FavouriteList: ArrayList<FavouriteShayariDisplay>, var invo
     override fun onBindViewHolder(holder: MyAdapter, position: Int) {
        holder.txtFavShayari.setText(FavouriteList[position].shayari)
 
-        if(FavouriteList[position].fav == 1)
-        {
+
             holder.imgFav.setImageResource(R.drawable.heartttt)
-
-
-        }
-        else
-        {
-            holder.imgFav.setImageResource(R.drawable.sss)
-
-        }
 
 
        holder.imgFav.setOnClickListener {
 
-           if (FavouriteList[position].fav == 1)
-           {
+//           if (FavouriteList[position].fav == 1)
+//           {
 
                invoke.invoke(0,FavouriteList[position].s_id)
-               FavouriteList[position].fav=0
+//               FavouriteList[position].fav=0
 
 
-           }
-           else{
-
-               invoke.invoke(1,FavouriteList[position].s_id)
-               FavouriteList[position].fav=1
-
-
-           }
+//           }
+//           else{
+//
+//               invoke.invoke(1,FavouriteList[position].s_id)
+//               FavouriteList[position].fav=1
+//
+//
+//           }
 
            Log.e("hhhhhhh", "onBindViewHolder: "+FavouriteList[position].fav.toString())
+
            deleteFav(position)
        }
 
@@ -72,7 +64,6 @@ class FavAdapter(var FavouriteList: ArrayList<FavouriteShayariDisplay>, var invo
 
     fun updatedList(FavouriteList: ArrayList<FavouriteShayariDisplay>) {
         this.FavouriteList= FavouriteList
-
         notifyDataSetChanged()
 
     }
@@ -81,7 +72,7 @@ class FavAdapter(var FavouriteList: ArrayList<FavouriteShayariDisplay>, var invo
     {
         FavouriteList.removeAt(position)
         notifyItemRemoved(position)
-        notifyItemRangeRemoved(position,FavouriteList.size)
+//        notifyItemRangeRemoved(position,FavouriteList.size)
     }
 
 
