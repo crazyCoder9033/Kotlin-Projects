@@ -52,10 +52,6 @@ class FavAdapter(var FavouriteList: ArrayList<FavouriteShayariDisplay>, var invo
            deleteFav(position)
        }
 
-
-
-
-
     }
 
     override fun getItemCount(): Int {

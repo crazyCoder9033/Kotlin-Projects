@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +15,13 @@ import com.example.myexpensemanager.Activity.HomePageActivity
 import com.example.myexpensemanager.ModelClass.IncomeExpenseModelClass
 import com.example.myexpensemanager.databinding.ActivityTransactionBinding
 import com.example.myexpensemanager.databinding.DeleteItemBinding
-import com.example.myexpensemanager.databinding.DialogBinding
 
 class TransactionActivity : AppCompatActivity() {
      lateinit var callingDisplayFunction:CategoryHelper
     lateinit var bindin : ActivityTransactionBinding
     lateinit var adapter:TransactionAdapter
+    var i=0
+    var e=0
     var incomeExpenselist=ArrayList<IncomeExpenseModelClass>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +43,7 @@ class TransactionActivity : AppCompatActivity() {
             transaction.putExtra("type", it.type)
             transaction.putExtra("amount", it.amount)
             transaction.putExtra("note", it.note)
-            transaction.putExtra("title",titleUpdate)
+             transaction.putExtra("title",titleUpdate)
             transaction.putExtra("key_icon",iconUpdate)
             transaction.putExtra("updateRecord",true)
             startActivity(transaction)
@@ -92,5 +94,17 @@ class TransactionActivity : AppCompatActivity() {
             val transaction = Intent(this@TransactionActivity, HomePageActivity::class.java)
             startActivity(transaction)
         }
+
+//        var incomeAmt = 0
+//        var amountIncome=adapter.IncomeAmount(incomeAmt)
+//        var expenseAmt = 0
+//        var amountExpense=adapter.ExpenseAmount(expenseAmt)
+//        Log.e("TAG", "gggggg: "+amountIncome+"--"+amountExpense )
+//        var amountTotal=amountIncome-amountExpense
+//
+//        bindin.txtTotal.text= amountTotal.toString()
+
+
+
     }
 }

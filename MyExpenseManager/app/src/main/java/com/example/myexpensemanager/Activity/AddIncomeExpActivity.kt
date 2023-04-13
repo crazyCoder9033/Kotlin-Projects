@@ -53,6 +53,8 @@ class AddIncomeExpActivity : AppCompatActivity() {
                 var newAmt: String? = intent.getStringExtra("amount")
                 var newNote: String? = intent.getStringExtra("note")
                 var icon: String? = intent.getStringExtra("key_icon")
+                var category: String? = intent.getStringExtra("category")
+                var mode: String? = intent.getStringExtra("mode")
                 id_number= intent.getIntExtra("id",0)
                 binding.txtDone.text=icon
                 binding.edtAmount.setText(newAmt)
@@ -91,7 +93,7 @@ class AddIncomeExpActivity : AppCompatActivity() {
                     }
                         Log.e("TAG", "working: "+binding.txtDone.text.toString())
                         if (binding.txtDone.text.toString().equals("update")){
-                            xx.updateRecord(amount, notes,id_number)
+                            xx.updateRecord(amount, selectedcategory,selectedMode,type,notes,id_number)
                             Log.e("TAG", "working "+amount+"" )
 
                     }

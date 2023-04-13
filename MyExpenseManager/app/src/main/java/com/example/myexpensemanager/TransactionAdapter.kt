@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myexpensemanager.ModelClass.AddModelClass
 import com.example.myexpensemanager.ModelClass.IncomeExpenseModelClass
 
 class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClass>,var invo: ((IncomeExpenseModelClass)-> Unit),var delete: ((Int) -> Unit)) : RecyclerView.Adapter<TransactionAdapter.myAdapter>() {
+   var incomeAmt=0
+    var expenseAmt=0
     class myAdapter(view : View) :RecyclerView.ViewHolder(view){
 
         var txtIncomeExpense:TextView=view.findViewById(R.id.txtIncomeExpense)
@@ -33,20 +34,33 @@ class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClas
         holder.txtAmount.setText(incomeExpenselist[position].amount)
         holder.txtCategoryType.setText(incomeExpenselist[position].category)
         holder.txtMode.setText(incomeExpenselist[position].mode)
+        holder.txtIncomeExpense.setText(incomeExpenselist[position].type.toString())
 
-       holder.txtIncomeExpense.setText(incomeExpenselist[position].type.toString())
+
 
         if (holder.txtIncomeExpense.text.toString()=="1")
         {
             holder.txtIncomeExpense.setBackgroundColor(Color.GREEN)
             Log.e("TAG", "green: "+holder.txtIncomeExpense.text.toString() )
+
+             var incomeAmt1=holder.txtAmount.text.toString()
+            incomeAmt=incomeAmt1.toInt()
+            Log.e("TAG", "income: "+incomeAmt )
+
+            IncomeAmount(incomeAmt)
         }
         else
         {
             holder.txtIncomeExpense.setBackgroundColor(Color.RED)
+            var incomeExp1=holder.txtAmount.text.toString()
+            expenseAmt=incomeExp1.toInt()
+
+            Log.e("TAG", "exxpppp: "+expenseAmt )
             Log.e("TAG", "red: "+holder.txtIncomeExpense.text.toString() )
+            ExpenseAmount(expenseAmt)
         }
         holder.txtNote.setText(incomeExpenselist[position].note)
+
         holder.imgEdit.setOnClickListener {
             invo.invoke(incomeExpenselist[position])
         }
@@ -66,4 +80,19 @@ class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClas
     }
 
 
+    fun IncomeAmount(incomeAmt: Int): Int {
+
+//            var incomeAmount=incomeAmt
+
+//        Log.e("TAG", "IncomeAmount: "+incomeAmount)
+        return incomeAmt
+    }
+
+    fun ExpenseAmount(expenseAmt: Int): Int {
+
+
+
+
+        return expenseAmt
+    }
 }

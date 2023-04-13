@@ -91,10 +91,10 @@ class CategoryHelper(var context: Context) : SQLiteOpenHelper(context,"BudgetDb"
     }
 
 
-    fun updateRecord(amount: String?, notes: String?, id_number: Int)
+    fun updateRecord(amount: String?,selectedcategory:String?,selectedMode:String?,type:Int?, notes: String?, id_number: Int)
     {
         val update=writableDatabase
-        val updateSql="update incomeExpenseTb set amount='$amount',note='$notes' where id_no='$id_number'"
+        val updateSql="update incomeExpenseTb set amount='$amount',category_name='$selectedcategory',modeType='$selectedMode', type='$type',note='$notes' where id_no='$id_number'"
         update.execSQL(updateSql)
     }
 

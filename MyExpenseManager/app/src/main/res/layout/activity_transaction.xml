@@ -42,71 +42,45 @@
 
     </LinearLayout>
 
-<!--    <LinearLayout-->
-<!--        android:layout_margin="@dimen/_10sdp"-->
-<!--        android:layout_marginTop="@dimen/_10sdp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
+<LinearLayout
+    android:layout_margin="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-<!--        <TextView-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="@dimen/_5ssp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="INCOME(1)/EXPENSE(2)"-->
-<!--            android:layout_weight="0.5"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"/>-->
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#4CAF50"
+        android:background="@drawable/amounts_radius"
+        android:id="@+id/txtIncome"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
 
-<!--        <TextView-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="@dimen/_5ssp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="DATE"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"/>-->
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#FF1100"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/amounts_radius"
+        android:id="@+id/txtExpense"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
 
-<!--        <TextView-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="@dimen/_5ssp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="AMOUNT/NOTE"-->
-<!--            android:layout_weight="1.5"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <TextView-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="@dimen/_5ssp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="CATEGORY"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <TextView-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="@dimen/_5ssp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="PAYMENT MODE"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"/>-->
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#336487"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/amounts_radius"
+        android:id="@+id/txtTotal"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
 
 
 
-
-
-
-
-
-<!--    </LinearLayout>-->
-
+</LinearLayout>
     <LinearLayout
 
         android:layout_marginTop="@dimen/_10sdp"
