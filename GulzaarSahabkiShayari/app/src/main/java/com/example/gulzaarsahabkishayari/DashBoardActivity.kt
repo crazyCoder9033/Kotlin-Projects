@@ -15,6 +15,7 @@ import com.example.gulzaarsahabkishayari.databinding.ActivityDashBoardBinding
 class DashBoardActivity : AppCompatActivity() {
     lateinit var display:MyDatabase
     var isBackPressedOnce=false
+    var h=0
     var shayariList=ArrayList<ShayariModelClass>()
     lateinit var binding:ActivityDashBoardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,9 +58,9 @@ class DashBoardActivity : AppCompatActivity() {
             Toast.makeText(this, "HOME PE HI HO", Toast.LENGTH_SHORT).show()
         }
 
-            var activity: MainActivity= MainActivity()
+//            var activity: MainActivity= MainActivity()
         binding.loutQuit.setOnClickListener {
-            activity.finish()
+//            activity.finish()
             System.exit(0)
         }
 
@@ -97,6 +98,5 @@ class DashBoardActivity : AppCompatActivity() {
                        isBackPressedOnce=false
                     }, 1500)
                 }
-
 
 }
