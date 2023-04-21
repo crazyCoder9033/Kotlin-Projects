@@ -59,7 +59,8 @@ class AddIncomeExpActivity : AppCompatActivity() {
                 binding.txtDone.text=icon
                 binding.edtAmount.setText(newAmt)
                 binding.edtNote.setText(newNote)
-                }
+
+            }
 
         binding.txtDone.setOnClickListener {
             var amount = binding.edtAmount.text.toString()
