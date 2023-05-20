@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
         loadFragment(hm)
 
         loutHomeButton.setOnClickListener {
-            var hm = HomeFragment()
-            loadFragment(hm)
+            loadFragment(HomeFragment())
         }
 
         loutSearch.setOnClickListener {

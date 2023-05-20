@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:background="#C19DA9"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/_15ssp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:id="@+id/leftTxtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

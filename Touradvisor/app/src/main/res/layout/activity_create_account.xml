@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateAccountActivity">
+
+    <ImageView
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:src="@drawable/user"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"/>
+
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text="Lets get your Basic Details."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_margin="@dimen/_15sdp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:id="@+id/edtName"
+                android:hint="Enter Your Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:id="@+id/edtAge"
+                android:hint="Enter your Age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:id="@+id/edtAddress"
+                android:hint="Enter your address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:id="@+id/edtCity"
+                android:hint="Enter your City"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:id="@+id/edtPhone"
+                android:hint="Enter your Phone Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:id="@+id/edtEmail"
+                android:hint="Enter your Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:endIconMode="password_toggle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionDone"
+                android:inputType="textWebPassword"
+                android:id="@+id/edtPassword"
+                android:hint="Enter your password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:padding="@dimen/_10sdp"
+        android:id="@+id/btnCreateAccount"
+        android:layout_gravity="center_horizontal"
+        android:text="CREATE ACCOUNT"
+        android:backgroundTint="@color/mainGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

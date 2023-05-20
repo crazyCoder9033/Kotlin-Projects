@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backg"
+    tools:context=".login.LoginActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+       android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+           android:padding="@dimen/_10sdp"
+            android:background="@drawable/login_radius"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+             android:layout_marginStart="@dimen/_5sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/user"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"/>
+
+            <EditText
+                android:textAlignment="center"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                android:id="@+id/edtUsername"
+                android:textColorHint="@color/white"
+                android:hint="USERNAME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:background="@drawable/login_radius"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/padlock"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"/>
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:textAlignment="center"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                android:textColorHint="@color/white"
+                android:hint="PASSWORD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="REMEMBER ME"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="LOGIN"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:backgroundTint="#E74646"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+
+<ProgressBar
+    android:id="@+id/progressBAr"
+    android:visibility="gone"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:layout_width="@dimen/_40sdp"
+    android:layout_height="@dimen/_40sdp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

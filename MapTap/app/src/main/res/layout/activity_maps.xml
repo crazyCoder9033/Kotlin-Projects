@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MapsActivity">
+
+<LinearLayout
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <EditText
+        android:id="@+id/edtLatitude"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="enter latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtLongitude"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="enter longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:imeOptions="actionDone"
+        android:id="@+id/edtLocation"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="enter location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+
+    <fragment
+        android:layout_marginTop="@dimen/_10sdp"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"/>
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+

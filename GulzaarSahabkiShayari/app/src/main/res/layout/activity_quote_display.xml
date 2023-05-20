@@ -53,6 +53,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/layoutDownload"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_400sdp">
 
@@ -73,8 +74,8 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
 
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:textColor="#85586F"
                         android:textSize="@dimen/_20ssp"
                         android:textStyle="italic" />

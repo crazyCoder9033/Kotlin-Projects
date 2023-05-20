@@ -2,7 +2,7 @@ package com.example.retrofitapicalling.apiClient
 
 import com.google.gson.annotations.SerializedName
 
-data class Products(
+data class Products<T>(
 
 	@field:SerializedName("total")
 	val total: Int? = null,

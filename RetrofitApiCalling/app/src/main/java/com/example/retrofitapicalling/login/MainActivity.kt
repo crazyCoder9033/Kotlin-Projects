@@ -1,9 +1,11 @@
-package com.example.retrofitapicalling
+package com.example.retrofitapicalling.login
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.retrofitapicalling.DisplayActivity
+import com.example.retrofitapicalling.ProductsAdapter
 import com.example.retrofitapicalling.apiClient.APIClient
 import com.example.retrofitapicalling.apiClient.APIInterface
 import com.example.retrofitapicalling.apiClient.Products
@@ -28,8 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         apiInterface=APIClient.getClient().create(APIInterface::class.java)
 
-        apiInterface.getAllProducts().enqueue(object : Callback<Products> {
-            override fun onResponse(call: Call<Products>, response: Response<Products>) {
+        apiInterface.getAllProducts().enqueue(object : Callback<Products<Any?>> {
+            override fun onResponse(call: Call<Products<Any?>>, response: Response<Products<Any?>>) {
 
                var list= response.body()?.products
 
@@ -38,9 +40,11 @@ class MainActivity : AppCompatActivity() {
 //                    Log.e("TAG", "onResponse: "+list[i]?.title )
 //                }
 
-                var adapter=ProductsAdapter(list,this@MainActivity){
+                var adapter= ProductsAdapter(list,this@MainActivity){
 
-                    var intent = Intent(this@MainActivity,DisplayActivity::class.java)
+                    var intent = Intent(this@MainActivity, DisplayActivity::class.java)
+
+                    intent.putExtra("id",it?.id)
 
 
                     startActivity(intent)
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            override fun onFailure(call: Call<Products>, t: Throwable) {
+            override fun onFailure(call: Call<Products<Any?>>, t: Throwable) {
 
             }
 

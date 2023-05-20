@@ -9,8 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.retrofitapicalling.apiClient.ProductsItem
+import com.example.retrofitapicalling.login.MainActivity
 
-class ProductsAdapter(var list: List<ProductsItem?>?,var  mainActivity: MainActivity,var invoke:((ProductsItem?)-> Unit)) : RecyclerView.Adapter<ProductsAdapter.myAdapter>() {
+class ProductsAdapter(var list: List<ProductsItem?>?,
+                      var mainActivity: MainActivity,
+                      var invoke:((ProductsItem?)-> Unit)) : RecyclerView.Adapter<ProductsAdapter.myAdapter>() {
     class myAdapter(view : View): RecyclerView.ViewHolder(view){
         var txtBrand : TextView =view.findViewById(R.id.txtBrand)
         var txtTitle : TextView =view.findViewById(R.id.txtTitle)
@@ -46,3 +49,6 @@ class ProductsAdapter(var list: List<ProductsItem?>?,var  mainActivity: MainActi
     }
 
 }
+
+//
+//

@@ -1,26 +1,33 @@
 package com.example.gulzaarsahabkishayari
 
-import android.R.attr.label
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.R.attr.bitmap
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
+import android.view.View
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gulzaarsahabkishayari.databinding.ActivityQuoteDisplayBinding
+import java.io.File
+import java.io.FileOutputStream
+import java.util.*
 
 
 class QuoteDisplayActivity : AppCompatActivity() {
     lateinit var binding:ActivityQuoteDisplayBinding
+     var finalBitmap :Bitmap?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityQuoteDisplayBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         displayQuote()
+
     }
 
     private fun displayQuote() {
@@ -62,25 +69,28 @@ class QuoteDisplayActivity : AppCompatActivity() {
         }
 
 
-
-
         binding.imgCopy.setOnClickListener {
 
         }
 
+        binding.imgDownload.setOnClickListener {
 
+           val pic : View = binding.layoutDownload
+           pic.isDrawingCacheEnabled=true
+            val height : Int=pic.height
+            val width : Int=pic.width
+            pic.layout(0,0,width,height)
+            pic.buildDrawingCache(true)
+            val bm : Bitmap= Bitmap.createBitmap(pic.getDrawingCache())
+            pic.isDrawingCacheEnabled=false
+            Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show()
+            MediaStore.Images.Media.insertImage(contentResolver,bm,null,null)
 
-//        binding.imgDownload.setOnClickListener {
-//         var drawable : BitmapDrawable= binding.imgDisplayImage.drawable as BitmapDrawable
-//            var bitmap : Bitmap= drawable.bitmap
-//
-//            var filepath: File = Environment.getExternalStorageDirectory()
-//            var dir  =File(filepath.absolutePath +"/Demo/")
-//            dir.mkdir()
-//             var file=File(dir,System.currentTimeMillis().toString()+".jpg")
-//
-//            OutputStream= FileOutputStream(file)
-//        }
+        }
+
 
     }
+
+
+
 }

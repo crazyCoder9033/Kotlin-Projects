@@ -21,13 +21,20 @@ class DisplayActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         working()
+        permissions()
+    }
+
+    private fun permissions() {
+
     }
 
     private fun working() {
 
+        var getId=intent.getIntExtra("id",0)
+
         apiInterface= APIClient.getClient().create(APIInterface::class.java)
 
-        apiInterface.getAllContent().enqueue(object : Callback<AllContent>{
+        apiInterface.getAllContent(getId).enqueue(object : Callback<AllContent>{
             override fun onResponse(call: Call<AllContent>, response: Response<AllContent>) {
              var images=  response.body()?.images
                 var title=response.body()?.title

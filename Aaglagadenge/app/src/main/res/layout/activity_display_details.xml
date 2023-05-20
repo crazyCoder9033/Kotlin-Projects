@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:orientation="vertical"
+    tools:context=".DisplayDetailsActivity">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:src="@drawable/arrow"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"/>
+    <TextView
+        android:textAlignment="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="DETAILS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:id="@+id/rcvDisplay"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

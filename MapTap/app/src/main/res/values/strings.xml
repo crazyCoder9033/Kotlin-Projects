@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Map Tap</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_search_location">SearchLocationActivity</string>
+    <string name="title_activity_maps2">MapsActivity2</string>
+    <string name="title_activity_current_location">CurrentLocationActivity</string>
+</resources>

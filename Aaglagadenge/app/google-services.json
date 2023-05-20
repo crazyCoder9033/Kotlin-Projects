@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "825770015349",
+    "project_id": "aag-laga-denge-1aada",
+    "storage_bucket": "aag-laga-denge-1aada.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825770015349:android:599aa3e74d24f652bc963c",
+        "android_client_info": {
+          "package_name": "com.example.aaglagadenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825770015349-ph7d06v0nld623kbol5snbku3vamd4tr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aaglagadenge",
+            "certificate_hash": "dee2a61e30dfac0c959de51e2f36b1606171176e"
+          }
+        },
+        {
+          "client_id": "825770015349-kgub4f5t8hpmesu6ies8125unpkht5ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2pphm2rDhN2dxLi4ckUoWSl6y1aa6zmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825770015349-kgub4f5t8hpmesu6ies8125unpkht5ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

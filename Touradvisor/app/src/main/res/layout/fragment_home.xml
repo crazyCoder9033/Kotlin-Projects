@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/mainGreen"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/user"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"/>
+
+        <ImageView
+            android:src="@drawable/cart"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"/>
+
+        </LinearLayout>
+        <TextView
+            android:textSize="@dimen/_25ssp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Explore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/loutCity"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_gravity="center_horizontal"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/main_button_radius"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/city"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"/>
+        <TextView
+
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:text="CITY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/main_button_radius"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/hotel"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"/>
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:text="HOTELS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/main_button_radius"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/activity"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:text="THINGS TO DO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/VPView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
