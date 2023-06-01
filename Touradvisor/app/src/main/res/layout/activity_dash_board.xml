@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashBoardActivity">
+    tools:context=".Activity.DashBoardActivity">
 
     <FrameLayout
         android:id="@+id/fragmentDisplay"
@@ -19,15 +19,11 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="@color/white"
+        android:background="@color/dark"
         android:layout_alignParentBottom="true"
         android:padding="10dp"
         app:menu="@menu/item_bottom_navigation" />
-
-
-
-
-
 
 
 </RelativeLayout>

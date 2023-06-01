@@ -5,10 +5,10 @@
     android:orientation="vertical">
 
     <ImageView
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:id="@+id/imgView"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="200dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 

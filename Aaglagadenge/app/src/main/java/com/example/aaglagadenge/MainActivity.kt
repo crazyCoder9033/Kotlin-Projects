@@ -38,12 +38,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun workingClass() {
 
+
         firebaseDatabase = FirebaseDatabase.getInstance()
         storageReference=FirebaseStorage.getInstance().reference
 
 
         binding.btnRegister.setOnClickListener {
-
             var name = binding.edtName.text.toString()
             var address = binding.edtAddress.text.toString()
             var phone = binding.edtPhone.text.toString()
