@@ -8,7 +8,7 @@
     android:background="@color/light"
     tools:context=".Activity.DisplayActivity">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,18 +39,30 @@
 
 
 
-<!--            <ImageView-->
-<!--                android:scaleType="fitXY"-->
-<!--                android:layout_margin="@dimen/_10sdp"-->
-<!--                android:layout_marginTop="@dimen/_10sdp"-->
-<!--                android:id="@+id/imgView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/_200sdp"/>-->
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/VPView"
+            <androidx.cardview.widget.CardView
                 android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"/>
+                android:layout_height="wrap_content">
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/VPView"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"/>
+            </androidx.cardview.widget.CardView>
+
+
+            <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                android:id="@+id/worm_dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:dotsColor="@color/dark"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="10dp"
+                app:dotsSpacing="4dp"
+                app:dotsStrokeColor="@color/white"
+                app:dotsStrokeWidth="2dp" />
 
             <LinearLayout
 
@@ -80,7 +92,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:text="Open Hours:"
@@ -88,6 +100,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:id="@+id/txtOpenHours"
@@ -103,6 +116,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:text="ABOUT THIS PLACE"
@@ -110,6 +124,9 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+
+                   android:lineHeight="@dimen/_25ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textColor="@color/black"
                     android:textStyle="italic"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -125,13 +142,14 @@
                 android:layout_height="wrap_content">
 
             <TextView
-
+                android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:text="Time Spent : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:textSize="@dimen/_15ssp"
                 android:textColor="@color/black"
                 android:id="@+id/txtTimeSpent"
                 android:layout_width="wrap_content"
@@ -140,8 +158,22 @@
             </LinearLayout>
 
 
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <FrameLayout
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"/>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 

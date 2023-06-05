@@ -5,28 +5,44 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.touradvisor.Adapter.ThirdImageAdapter
+import com.example.touradvisor.Fragment.CityHotelFragment
+import com.example.touradvisor.Fragment.CityPlaceFragment
+import com.example.touradvisor.Fragment.FavouriteFragment
+import com.example.touradvisor.Fragment.MapsFragment
 import com.example.touradvisor.ModelClass.SecondImageSliderModel
+import com.example.touradvisor.R
 import com.example.touradvisor.databinding.ActivityAllDetailsBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class AllDetailsActivity : AppCompatActivity() {
     lateinit var binding: ActivityAllDetailsBinding
     lateinit var firebaseDatabase: DatabaseReference
     lateinit var thirdImageAdapter: ThirdImageAdapter
+    private lateinit var auth: FirebaseAuth
+
     var imageList = ArrayList<SecondImageSliderModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityAllDetailsBinding.inflate(layoutInflater)
         firebaseDatabase = FirebaseDatabase.getInstance().getReference()
-
+        auth = Firebase.auth
         conditions()
         cart()
+        fav()
         setContentView(binding.root)
+    }
+
+    private fun fav() {
+
+
     }
 
     private fun cart() {
@@ -69,6 +85,7 @@ class AllDetailsActivity : AppCompatActivity() {
                 }
                 thirdImageAdapter= ThirdImageAdapter(imageList,this@AllDetailsActivity)
                 binding.VPView.adapter=thirdImageAdapter
+                binding.wormDotsIndicator.attachTo(binding.VPView)
             }
             override fun onCancelled(error: DatabaseError) {
 
@@ -98,6 +115,7 @@ class AllDetailsActivity : AppCompatActivity() {
 
         firebaseDatabase.child("top").child(value).child("activity").child(key).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                var keyyy=snapshot.key
                 var details = snapshot.child("details").value.toString()
                 var title = snapshot.child("name").value.toString()
                 var rating = snapshot.child("rating").value.toString()
@@ -106,10 +124,25 @@ class AllDetailsActivity : AppCompatActivity() {
                 binding.txtTitle.setText(title)
                 binding.txtRating.setText(rating)
                 binding.txtPrice.setText(price)
+
+
+
+
             }
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
+
+
+        val fragment = MapsFragment()
+        val args = Bundle()
+        args.putString("key",key)
+        args.putString("value",value)
+        args.putBoolean("activity",true)
+
+        fragment.setArguments(args).toString()
+        supportFragmentManager.beginTransaction().replace(R.id.mapView, fragment).commit()
     }
 
 
@@ -129,6 +162,7 @@ class AllDetailsActivity : AppCompatActivity() {
                 }
                 thirdImageAdapter= ThirdImageAdapter(imageList,this@AllDetailsActivity)
                 binding.VPView.adapter=thirdImageAdapter
+                binding.wormDotsIndicator.attachTo(binding.VPView)
             }
             override fun onCancelled(error: DatabaseError) {
 
@@ -169,6 +203,15 @@ class AllDetailsActivity : AppCompatActivity() {
             }
         })
 
+        val fragment = MapsFragment()
+        val args = Bundle()
+        args.putString("key",key)
+        args.putString("value",value)
+        args.putBoolean("place",true)
+
+        fragment.setArguments(args).toString()
+        supportFragmentManager.beginTransaction().replace(R.id.mapView, fragment).commit()
+
     }
 
 
@@ -187,6 +230,7 @@ class AllDetailsActivity : AppCompatActivity() {
                 }
                 thirdImageAdapter= ThirdImageAdapter(imageList,this@AllDetailsActivity)
                 binding.VPView.adapter=thirdImageAdapter
+                binding.wormDotsIndicator.attachTo(binding.VPView)
             }
             override fun onCancelled(error: DatabaseError) {
 
@@ -231,6 +275,16 @@ class AllDetailsActivity : AppCompatActivity() {
             }
 
         })
+        val fragment = MapsFragment()
+        val args = Bundle()
+        args.putString("key",key)
+        args.putString("value",value)
+        args.putBoolean("hotel",true)
+
+        fragment.setArguments(args).toString()
+        supportFragmentManager.beginTransaction().replace(R.id.mapView, fragment).commit()
+
+
 
     }
 }

@@ -9,10 +9,10 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        app:lottie_rawRes="@raw/json"
+        app:lottie_rawRes="@raw/second"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

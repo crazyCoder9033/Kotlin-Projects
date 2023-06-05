@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -39,17 +39,45 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </androidx.appcompat.widget.Toolbar>
+<androidx.cardview.widget.CardView
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/VPView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_below="@id/toolbar"
+
+        />
 
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/VPView"
+</androidx.cardview.widget.CardView>
+
+
+            <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                android:id="@+id/worm_dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:dotsColor="@color/dark"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="10dp"
+                app:dotsSpacing="4dp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:dotsStrokeColor="@color/light"
+                app:dotsStrokeWidth="2dp" />
+
+            <LinearLayout
+                android:background="@color/dark"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_below="@id/toolbar"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp" />
+                android:layout_height="@dimen/_1sdp"/>
+
 
             <LinearLayout
 
@@ -112,6 +140,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@color/dark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"/>
+
+            <LinearLayout
                 android:layout_margin="@dimen/_10sdp"
                 android:id="@+id/loutTitles"
                 android:orientation="horizontal"
@@ -119,6 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textAlignment="center"
@@ -146,6 +180,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/dark"
                     android:textAlignment="center"
                     android:layout_weight="1"
                    android:id="@+id/txtPrice"
@@ -153,6 +190,9 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/dark"
                     android:textAlignment="center"
                    android:id="@+id/txtRating"
                     android:layout_weight="1"
@@ -160,6 +200,11 @@
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/dark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -172,6 +217,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -179,6 +225,9 @@
                     android:text="ABOUT THIS PLACE" />
 
                 <TextView
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    android:lineHeight="@dimen/_25ssp"
                     android:textStyle="italic"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:id="@+id/txtDetails"
@@ -188,10 +237,24 @@
 
             </LinearLayout>
 
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <FrameLayout
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"/>
+            </androidx.cardview.widget.CardView>
 
 
 
-        </RelativeLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

@@ -4,16 +4,20 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.touradvisor.databinding.ActivityCreateAccountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class CreateAccountActivity : AppCompatActivity() {
     lateinit var binding: ActivityCreateAccountBinding
     private lateinit var auth: FirebaseAuth
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var firebaseDatabase: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityCreateAccountBinding.inflate(layoutInflater)
@@ -68,17 +72,18 @@ class CreateAccountActivity : AppCompatActivity() {
                         Toast.makeText(this, "created account", Toast.LENGTH_SHORT).show()
                         var myEdit: SharedPreferences.Editor = sharedPreferences.edit()
                         myEdit.putBoolean("isLogin", true)
-                        myEdit.putString("name",name)
-                        myEdit.putString("email",email)
-                        myEdit.putString("age",age)
-                        myEdit.putString("city",city)
-                        myEdit.putString("address",address)
-                        myEdit.putString("phone",phone)
+//                        myEdit.putString("name",name)
+//                        myEdit.putString("email",email)
+//                        myEdit.putString("age",age)
+//                        myEdit.putString("city",city)
+//                        myEdit.putString("address",address)
+//                        myEdit.putString("phone",phone)
                         myEdit.commit()
                         var intent = Intent(this, DashBoardActivity::class.java)
                         startActivity(intent)
                         finish()
 
+                        addUserData(name,age,address,city,phone,email,auth.currentUser?.uid!!)
                     }
                 }.addOnFailureListener {
                     Toast.makeText(this,it.message, Toast.LENGTH_SHORT).show()
@@ -89,4 +94,26 @@ class CreateAccountActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun addUserData(name: String, age: String, address: String, city: String, phone: String, email: String, uid: String) {
+        firebaseDatabase=FirebaseDatabase.getInstance().getReference()
+
+        firebaseDatabase.child("user").child(uid).setValue(userModelClass(name,age,address,city,phone,email,uid))
+
+
+    }
+
+
+}
+class userModelClass(
+    var  name: String,
+    var  age: String,
+    var address: String,
+    var  city: String,
+    var phone: String,
+    var  email: String,
+    var uid: String?,
+) {
+
+
 }

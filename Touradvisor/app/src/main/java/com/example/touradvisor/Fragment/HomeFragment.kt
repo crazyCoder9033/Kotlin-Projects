@@ -64,28 +64,6 @@ lateinit var imageAdapter: ImageAdapter
 
     private fun workingClass() {
 
-//        homeBinding.txtKeepExploring.setOnClickListener {
-//
-//
-//
-//
-//                        val newGamefragment = SuratFragment()
-//                        val fragmentTransaction = requireFragmentManager().beginTransaction()
-//                        fragmentTransaction.replace(R.id.fragmentDisplay, newGamefragment)
-//                        fragmentTransaction.addToBackStack(null)
-//                        fragmentTransaction.commit()
-//
-//
-//        }
-
-
-//        homeBinding.txtKeepExploring.setOnClickListener {
-//            val newGamefragment = SuratFragment()
-//            val fragmentTransaction = requireFragmentManager().beginTransaction()
-//            fragmentTransaction.replace(R.id.fragmentDisplay, newGamefragment)
-//            fragmentTransaction.addToBackStack(null)
-//            fragmentTransaction.commit()
-//        }
 
     }
 
@@ -140,9 +118,9 @@ lateinit var imageAdapter: ImageAdapter
 
     private fun imageSlider() {
 
-        homeBinding.loutCity.setOnClickListener {
-            Log.e("hhhh", "imageSlider: " )
-        }
+//        homeBinding.loutCity.setOnClickListener {
+//            Log.e("hhhh", "imageSlider: " )
+//        }
 
         firebaseDatabase.child("slider").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -164,10 +142,14 @@ lateinit var imageAdapter: ImageAdapter
 
                 }
                 homeBinding.VPView.adapter=imageAdapter
+                homeBinding.wormDotsIndicator.attachTo(homeBinding.VPView)
+
             }
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
+
 
 
 

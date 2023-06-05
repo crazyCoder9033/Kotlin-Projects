@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.touradvisor.Adapter.SecondImageAdapter
+import com.example.touradvisor.Fragment.MapsFragment
 import com.example.touradvisor.ModelClass.SecondImageSliderModel
+import com.example.touradvisor.R
 import com.example.touradvisor.databinding.ActivityDisplayBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -24,8 +26,16 @@ class DisplayActivity : AppCompatActivity() {
         firebaseDatabase = FirebaseDatabase.getInstance().getReference()
         workingClass()
         imageSlider()
+        mapShow()
 
         setContentView(binding.root)
+    }
+
+    private fun mapShow() {
+
+//        val args = Bundle()
+//        args.putString("key",key)
+//        supportFragmentManager.beginTransaction().replace(R.id.mapView, MapsFragment()).commit()
     }
 
     private fun imageSlider() {
@@ -44,11 +54,22 @@ class DisplayActivity : AppCompatActivity() {
                 }
                 secondImageAdapter= SecondImageAdapter(imageList, this@DisplayActivity)
                 binding.VPView.adapter=secondImageAdapter
+                binding.wormDotsIndicator.attachTo(binding.VPView)
             }
 
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
+        val fragment = MapsFragment()
+
+        val args = Bundle()
+        args.putString("key",key)
+        args.putBoolean("slider",true)
+        fragment.setArguments(args).toString()
+        supportFragmentManager.beginTransaction().replace(R.id.mapView, fragment).commit()
+
+
     }
 
 

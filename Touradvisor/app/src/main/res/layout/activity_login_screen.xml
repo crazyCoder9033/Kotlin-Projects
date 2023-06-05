@@ -66,15 +66,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_10sdp">
 
         <Button
+            android:textColor="@color/white"
+            android:layout_weight="1"
             android:id="@+id/btnLogin"
-            android:layout_width="@dimen/_140sdp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/mainGreen"
+            android:backgroundTint="@color/dark"
             android:text="LOGIN" />
 
         <TextView
@@ -86,10 +88,12 @@
             android:textStyle="bold" />
 
         <Button
+            android:textColor="@color/white"
+            android:layout_weight="1"
             android:id="@+id/btnCreateAccount"
-            android:layout_width="@dimen/_140sdp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/mainGreen"
+            android:backgroundTint="@color/dark"
             android:text="CREATE ACCOUNT" />
 
 

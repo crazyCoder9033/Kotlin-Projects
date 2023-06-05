@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.touradvisor.Activity.AllDetailsActivity
 import com.example.touradvisor.Adapter.SearchAdapter
 import com.example.touradvisor.Adapter.SuratHotelAdapter
-import com.example.touradvisor.ModelClass.SearchModelClass
 import com.example.touradvisor.ModelClass.SuratModelClass
-import com.example.touradvisor.ModelClass.TopDestinationModelClass
 import com.example.touradvisor.databinding.FragmentSearchBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -40,31 +38,6 @@ class SearchFragment : Fragment() {
 
     private fun searchFeature() {
 
-//        searchBinding.btnSearch.setOnClickListener {
-//
-//            var search=searchBinding.edtSearch.text.toString()
-//
-//            firebaseDatabase.child("top").child(search).child("hotel").addValueEventListener(object : ValueEventListener{
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    searchList.clear()
-//                    for (photo in snapshot.children)
-//                    {
-//                        var data = photo.getValue(SuratModelClass::class.java)
-//                        data?.let { it1 -> searchList.add(it1) }
-////                        data?.location=photo.child("hotelName").value.toString()
-//                    }
-//                    adapter= SearchAdapter(searchList)
-//                    var manager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-//                    searchBinding.rcvSearch.layoutManager = manager
-//                    searchBinding.rcvSearch.adapter=adapter
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//
-//                }
-//            })
-//        }
-//
 
         searchBinding.txtHotels.setOnClickListener {
 

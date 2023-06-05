@@ -18,7 +18,7 @@ class SuratHotelAdapter(
 
     ) : RecyclerView.Adapter<SuratHotelAdapter.myAdapter>() {
     class myAdapter(view : View) : RecyclerView.ViewHolder(view){
-        var details : TextView=view.findViewById(R.id.txtDetails)
+//        var details : TextView=view.findViewById(R.id.txtDetails)
         var amount : TextView=view.findViewById(R.id.txtAmount)
         var rating : TextView=view.findViewById(R.id.txtRating)
         var thumbnail : ImageView=view.findViewById(R.id.imgThumbnail)
@@ -39,7 +39,7 @@ class SuratHotelAdapter(
 
     override fun onBindViewHolder(holder: myAdapter, position: Int) {
         context?.let { Glide.with(it).load(suratDetailsList[position].thumbnail).into(holder.thumbnail) }
-        holder.details.setText(suratDetailsList[position].details)
+//        holder.details.setText(suratDetailsList[position].details)
         holder.amount.setText(suratDetailsList[position].amount)
         holder.rating.setText(suratDetailsList[position].rating)
         holder.name.setText(suratDetailsList[position].name)

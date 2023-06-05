@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
-class SuratPlaceFragment : Fragment() {
+class CityPlaceFragment : Fragment() {
     lateinit var firebaseDatabase: DatabaseReference
     lateinit var suratHotelAdapter: SuratHotelAdapter
   lateinit var suratPlaceBinding: FragmentSuratPlaceBinding

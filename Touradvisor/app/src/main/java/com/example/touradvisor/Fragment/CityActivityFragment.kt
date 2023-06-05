@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class SuratActivityFragment : Fragment() {
+class CityActivityFragment : Fragment() {
     lateinit var firebaseDatabase: DatabaseReference
     var suratDetailsList = ArrayList<SuratModelClass>()
     lateinit var suratHotelAdapter: SuratHotelAdapter

@@ -38,7 +38,7 @@ lateinit var cityBinding: FragmentCityBinding
     }
 
     private fun hotelFragment() {
-        val newGamefragment = SuratHotelFragment()
+        val newGamefragment = CityHotelFragment()
         val fragmentTransaction = requireFragmentManager().beginTransaction()
         fragmentTransaction.replace(R.id.cityFrameLayout, newGamefragment)
         fragmentTransaction.addToBackStack(null)

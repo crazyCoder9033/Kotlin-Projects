@@ -52,14 +52,14 @@ class WelcomeScreenActivity : AppCompatActivity() {
             sliderList = ArrayList()
             sliderList.add(
                 SliderData(
-                    "Browse Locations All Around the World",
+                    "Browse Locations",
                     R.drawable.screenone
                 )
             )
             sliderList.add(SliderData("Find Best Hotels near by you", R.drawable.screentwo))
             sliderList.add(
                 SliderData(
-                    "Plan your trip from any part of the world",
+                    "Plan your trip",
                     R.drawable.screenthree
                 )
             )

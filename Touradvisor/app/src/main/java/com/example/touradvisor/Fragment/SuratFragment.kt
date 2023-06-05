@@ -1,30 +1,17 @@
 package com.example.touradvisor.Fragment
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableLayout
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.touradvisor.Adapter.SuratHotelAdapter
-import com.example.touradvisor.ModelClass.SuratModelClass
-import com.example.touradvisor.ModelClass.TopDestinationModelClass
 import com.example.touradvisor.R
 import com.example.touradvisor.databinding.FragmentSuratBinding
-import com.google.android.material.tabs.TabLayout
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 
 
 class SuratFragment : Fragment() {
 lateinit var suratFragment : FragmentSuratBinding
+ var position=0
 
 
     override fun onCreateView(
@@ -43,6 +30,8 @@ lateinit var suratFragment : FragmentSuratBinding
         return suratFragment.root
     }
 
+
+
     private fun hotelFragment() {
 
         val value = arguments?.getString("key").toString()
@@ -51,10 +40,8 @@ lateinit var suratFragment : FragmentSuratBinding
         val args = Bundle()
         args.putString("key",value)
 
-        val newGamefragment = SuratHotelFragment()
+        val newGamefragment = CityHotelFragment()
         newGamefragment.setArguments(args).toString()
-
-
         val fragmentTransaction = requireFragmentManager().beginTransaction()
         fragmentTransaction.replace(R.id.suratFrameLayout, newGamefragment)
         fragmentTransaction.addToBackStack(null)
@@ -67,7 +54,7 @@ lateinit var suratFragment : FragmentSuratBinding
         val args = Bundle()
         args.putString("key",value)
 
-        val newGamefragment = SuratPlaceFragment()
+        val newGamefragment = CityPlaceFragment()
         newGamefragment.setArguments(args).toString()
         val fragmentTransaction = requireFragmentManager().beginTransaction()
         fragmentTransaction.replace(R.id.suratFrameLayout, newGamefragment)
@@ -80,7 +67,7 @@ lateinit var suratFragment : FragmentSuratBinding
 
         val args = Bundle()
         args.putString("key",value)
-        val newGamefragment = SuratActivityFragment()
+        val newGamefragment = CityActivityFragment()
         newGamefragment.setArguments(args).toString()
         val fragmentTransaction = requireFragmentManager().beginTransaction()
         fragmentTransaction.replace(R.id.suratFrameLayout, newGamefragment)

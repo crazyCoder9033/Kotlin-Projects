@@ -7,6 +7,7 @@
     tools:context=".Fragment.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:background="@color/light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -43,43 +44,45 @@
 
         </LinearLayout>
         <TextView
-            android:textSize="@dimen/_25ssp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_35ssp"
             android:layout_marginStart="@dimen/_10sdp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:text="Explore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
+            android:text="Explore..."
             android:layout_marginBottom="@dimen/_10sdp"
-            android:id="@+id/loutCity"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_gravity="center_horizontal"
-            android:paddingHorizontal="@dimen/_20sdp"
-            android:paddingVertical="@dimen/_10sdp"
-            android:gravity="center_horizontal"
-            android:background="@drawable/main_button_radius"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                app:tint="@color/dark"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/city"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"/>
-        <TextView
-            android:textSize="@dimen/_15ssp"
-            android:textStyle="bold"
-            android:textColor="@color/dark"
-            android:layout_gravity="center_vertical"
-            android:text="CITY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_marginBottom="@dimen/_10sdp"-->
+<!--            android:id="@+id/loutCity"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:paddingHorizontal="@dimen/_20sdp"-->
+<!--            android:paddingVertical="@dimen/_10sdp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:background="@drawable/main_button_radius"-->
+<!--            android:layout_width="@dimen/_150sdp"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <ImageView-->
+<!--                app:tint="@color/dark"-->
+<!--                android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/city"-->
+<!--                android:layout_width="@dimen/_20sdp"-->
+<!--                android:layout_height="@dimen/_20sdp"/>-->
+<!--        <TextView-->
+<!--            android:textSize="@dimen/_15ssp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/dark"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:text="CITY"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        </LinearLayout>-->
 
 <!--        <LinearLayout-->
 <!--            android:layout_marginStart="@dimen/_10sdp"-->
@@ -168,13 +171,22 @@
 
         </androidx.cardview.widget.CardView>
 
-
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/worm_dots_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:dotsColor="@color/dark"
+            app:dotsCornerRadius="8dp"
+            app:dotsSize="10dp"
+            app:dotsSpacing="4dp"
+            app:dotsStrokeColor="@color/light"
+            app:dotsStrokeWidth="2dp" />
 
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_marginTop="@dimen/_5sdp"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

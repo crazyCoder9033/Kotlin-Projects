@@ -9,8 +9,9 @@ class SuratModelClass {
     lateinit var thumbnail : String
     lateinit var key : String
     lateinit var location : String
+     var fav =0
 
-    constructor(amount : String, details : String, name : String,rating : String,thumbnail : String,key : String, location : String)
+    constructor(amount : String, details : String, name : String,rating : String,thumbnail : String,key : String, location : String, fav : Int)
     {
         this.amount=amount
         this.details=details
@@ -19,6 +20,7 @@ class SuratModelClass {
         this.thumbnail=thumbnail
         this.key=key
         this.location=location
+        this.fav=fav
     }
     constructor()
     {
