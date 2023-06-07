@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
 <ImageView
-    android:scaleType="fitXY"
+    android:scaleType="centerCrop"
     android:id="@+id/imgDestination"
     android:layout_width="@dimen/_160sdp"
     android:layout_height="@dimen/_150sdp"/>

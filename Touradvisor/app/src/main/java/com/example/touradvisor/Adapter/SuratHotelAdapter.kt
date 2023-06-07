@@ -11,19 +11,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.touradvisor.ModelClass.SuratModelClass
 import com.example.touradvisor.R
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SuratHotelAdapter(
-    var suratDetailsList: ArrayList<SuratModelClass>,
-   var  context: Context?,var invoke:((SuratModelClass) -> Unit),
 
-    ) : RecyclerView.Adapter<SuratHotelAdapter.myAdapter>() {
+    var suratDetailsList: ArrayList<SuratModelClass>,
+   var  context: Context?,var invoke:((SuratModelClass) -> Unit)) : RecyclerView.Adapter<SuratHotelAdapter.myAdapter>() {
+
+    lateinit var firebaseDatabase: DatabaseReference
+
     class myAdapter(view : View) : RecyclerView.ViewHolder(view){
+
 //        var details : TextView=view.findViewById(R.id.txtDetails)
         var amount : TextView=view.findViewById(R.id.txtAmount)
         var rating : TextView=view.findViewById(R.id.txtRating)
         var thumbnail : ImageView=view.findViewById(R.id.imgThumbnail)
         var name : TextView=view.findViewById(R.id.txtName)
         var cvHotel: CardView=view.findViewById(R.id.cvHotel)
+        var imgLiked :ImageView=view.findViewById(R.id.imgLiked)
 
     }
 
@@ -47,5 +53,6 @@ class SuratHotelAdapter(
         holder.cvHotel.setOnClickListener {
             invoke.invoke(suratDetailsList[position])
         }
+
     }
 }

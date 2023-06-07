@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.touradvisor.Adapter.ThirdImageAdapter
-import com.example.touradvisor.Fragment.CityHotelFragment
-import com.example.touradvisor.Fragment.CityPlaceFragment
-import com.example.touradvisor.Fragment.FavouriteFragment
 import com.example.touradvisor.Fragment.MapsFragment
 import com.example.touradvisor.ModelClass.SecondImageSliderModel
 import com.example.touradvisor.R

@@ -3,51 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C7E3EF"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.SearchFragment">
+    tools:context=".Fragment.TopCityFragment">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
+        android:background="@color/white"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <LinearLayout
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp"
+        <androidx.appcompat.widget.Toolbar
+            android:background="@color/dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <ImageView
+                app:tint="@color/white"
+                android:id="@+id/imgBack"
+                android:src="@drawable/back"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"/>
 
-            <EditText
-                android:inputType="text"
-                android:imeOptions="actionSearch"
-                android:textColor="@color/black"
-                android:hint="Where to?"
-                android:id="@+id/edtSearch"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_width="0dp"
-                android:layout_weight="0.9"
-                android:layout_height="wrap_content"/>
-
-            <Button
+            <TextView
+                android:textSize="@dimen/_15ssp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/dark"
-                android:id="@+id/btnSearch"
-                android:text="search"
-                android:layout_weight="0.4"
-                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-
-
-        </LinearLayout>
-
+        </androidx.appcompat.widget.Toolbar>
 
 <!--        <LinearLayout-->
-
 <!--            android:layout_margin="@dimen/_10sdp"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content">-->
@@ -83,9 +74,12 @@
 <!--                android:layout_weight="1"-->
 <!--                android:layout_width="0dp"-->
 <!--                android:layout_height="wrap_content"/>-->
-
-
 <!--        </LinearLayout>-->
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/suratFrameLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
 
         <com.google.android.material.tabs.TabLayout
 
@@ -98,20 +92,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvSearch"
+            android:id="@+id/rcvSuratHotel"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-<!--        <androidx.viewpager.widget.ViewPager-->
-<!--            android:id="@+id/VpLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content">-->
-<!--        </androidx.viewpager.widget.ViewPager>-->
-
-
     </LinearLayout>
 
+
+
+    </ScrollView>
 
 </FrameLayout>
