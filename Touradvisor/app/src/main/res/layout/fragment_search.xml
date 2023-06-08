@@ -15,6 +15,7 @@
 
 
         <LinearLayout
+
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/_10sdp"

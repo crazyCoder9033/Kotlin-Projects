@@ -38,6 +38,7 @@ lateinit var profileBinding: FragmentProfileBinding
         profileBinding= FragmentProfileBinding.inflate(layoutInflater)
         auth = Firebase.auth
         firebaseDatabase = FirebaseDatabase.getInstance().getReference()
+
         sharedPreferences=requireActivity().getSharedPreferences("MySharedPref", AppCompatActivity.MODE_PRIVATE)
         workingClass()
         return profileBinding.root
@@ -66,6 +67,10 @@ profileBinding.btnLogOut.setOnClickListener {
                     var city = snapshot.child("city").value.toString()
                     var phone = snapshot.child("phone").value.toString()
                     var email = snapshot.child("email").value.toString()
+
+                    var image = snapshot.child("images").value.toString()
+
+                    Log.e("USERRR", "onDataChange: "+image)
                     profileBinding.txtname.setText(name)
                     profileBinding.txtPhone.setText(phone)
                     profileBinding.txtAddress.setText(address)

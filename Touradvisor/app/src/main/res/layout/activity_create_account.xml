@@ -8,16 +8,13 @@
     tools:context=".Activity.CreateAccountActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:src="@drawable/personnnnn"
+        android:id="@+id/imgUser"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"/>
 
-    <Button
-        android:id="@+id/btnAddImage"
-        android:text="add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <TextView
         android:textColor="@color/black"
@@ -43,6 +40,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:id="@+id/edtName"
@@ -57,6 +55,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:id="@+id/edtAge"
@@ -71,6 +70,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:id="@+id/edtAddress"
@@ -86,6 +86,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:id="@+id/edtCity"
@@ -100,6 +101,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:id="@+id/edtPhone"
@@ -114,6 +116,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:id="@+id/edtEmail"
@@ -129,6 +132,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@color/light"
                 android:imeOptions="actionDone"
                 android:inputType="textWebPassword"
                 android:id="@+id/edtPassword"

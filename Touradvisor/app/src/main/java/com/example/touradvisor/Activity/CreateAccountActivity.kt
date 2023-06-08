@@ -1,9 +1,13 @@
 package com.example.touradvisor.Activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import com.example.touradvisor.databinding.ActivityCreateAccountBinding
@@ -12,10 +16,21 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.IOException
+import java.util.UUID
 
 class CreateAccountActivity : AppCompatActivity() {
     lateinit var binding: ActivityCreateAccountBinding
     private lateinit var auth: FirebaseAuth
+    var PICK_IMAGE_REQUEST=100
+    lateinit var storageReference : StorageReference
+    lateinit var images : String
+
+    lateinit var filePath: Uri
+    lateinit var bitmap : Bitmap
+
     lateinit var sharedPreferences: SharedPreferences
     lateinit var firebaseDatabase: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +39,70 @@ class CreateAccountActivity : AppCompatActivity() {
         setContentView(binding.root)
         auth = Firebase.auth
         sharedPreferences=getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        firebaseDatabase=FirebaseDatabase.getInstance().getReference()
+
+        storageReference= FirebaseStorage.getInstance().reference
         workingClass()
     }
 
+
+
+
+    private fun uploadImagetoFirebase() {
+
+        if (filePath != null) {
+
+            // Code for showing progressDialog while uploading
+            val progressDialog = ProgressDialog(this)
+            progressDialog.setTitle("Uploading...")
+            progressDialog.show()
+
+            // Defining the child of storageReference
+            val ref: StorageReference = storageReference.child("user_images/" + UUID.randomUUID().toString())
+
+            // adding listeners on upload
+            // or failure of image
+            ref.putFile(filePath)
+                .addOnCompleteListener{
+//                it.result.uploadSessionUri
+
+                    ref.downloadUrl.addOnSuccessListener {
+
+                        images=it.toString()
+
+                    }
+                }
+                .addOnSuccessListener { // Image uploaded successfully
+                    // Dismiss dialog
+
+                    progressDialog.dismiss()
+
+
+
+                    Toast.makeText(this, "Image Uploaded!!", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { e -> // Error, Image not uploaded
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "Failed " + e.message, Toast.LENGTH_SHORT).show()
+                }
+                .addOnProgressListener { taskSnapshot ->
+                    // Progress Listener for loading
+                    // percentage on the dialog box
+                    val progress = (100.0
+                            * taskSnapshot.bytesTransferred
+                            / taskSnapshot.totalByteCount)
+                    progressDialog.setMessage(
+                        "Uploaded " + progress.toInt() + "%")
+                }
+        }
+    }
     private fun workingClass() {
+
+        binding.imgUser.setOnClickListener {
+            getImage()
+        }
+
+
 
         binding.btnCreateAccount.setOnClickListener {
             var name= binding.edtName.text.toString()
@@ -69,21 +144,18 @@ class CreateAccountActivity : AppCompatActivity() {
 
                     if (it.isSuccessful)
                     {
+
                         Toast.makeText(this, "created account", Toast.LENGTH_SHORT).show()
                         var myEdit: SharedPreferences.Editor = sharedPreferences.edit()
                         myEdit.putBoolean("isLogin", true)
-//                        myEdit.putString("name",name)
-//                        myEdit.putString("email",email)
-//                        myEdit.putString("age",age)
-//                        myEdit.putString("city",city)
-//                        myEdit.putString("address",address)
-//                        myEdit.putString("phone",phone)
+
                         myEdit.commit()
+                        uploadImagetoFirebase()
                         var intent = Intent(this, DashBoardActivity::class.java)
                         startActivity(intent)
                         finish()
 
-                        addUserData(name,age,address,city,phone,email,auth.currentUser?.uid!!)
+                        addUserData(name,age,address,city,phone,email,images,auth.currentUser?.uid!!)
                     }
                 }.addOnFailureListener {
                     Toast.makeText(this,it.message, Toast.LENGTH_SHORT).show()
@@ -95,12 +167,47 @@ class CreateAccountActivity : AppCompatActivity() {
         }
     }
 
-    private fun addUserData(name: String, age: String, address: String, city: String, phone: String, email: String, uid: String) {
-        firebaseDatabase=FirebaseDatabase.getInstance().getReference()
+    private fun addUserData(name: String, age: String, address: String, city: String, phone: String, email: String,images : String, uid: String) {
 
-        firebaseDatabase.child("user").child(uid).setValue(userModelClass(name,age,address,city,phone,email,uid))
+        firebaseDatabase.child("user").child(uid).setValue(userModelClass(name,age,address,city,phone,email,images,uid))
 
 
+    }
+
+
+    fun getImage()
+    {
+        binding.imgUser.setOnClickListener {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(
+                Intent.createChooser(
+                    intent,
+                    "Select Image from here..."), PICK_IMAGE_REQUEST)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            if (requestCode === PICK_IMAGE_REQUEST && resultCode === RESULT_OK && data != null && data.getData() != null) {
+
+                // Get the Uri of data
+                filePath = data.getData()!!
+                try {
+
+                    // Setting image on image view using Bitmap
+                    bitmap = MediaStore.Images.Media
+                        .getBitmap(
+                            contentResolver,
+                            filePath)
+                    binding.imgUser.setImageBitmap(bitmap)
+                } catch (e: IOException) {
+                    // Log the exception
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 
 
@@ -112,7 +219,9 @@ class userModelClass(
     var  city: String,
     var phone: String,
     var  email: String,
-    var uid: String?,
+    var images : String,
+    var uid: String?
+
 ) {
 
 
