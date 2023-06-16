@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myexpensemanager.Activity.AddIncomeExpActivity
 import com.example.myexpensemanager.Activity.HomePageActivity
@@ -20,9 +21,11 @@ class TransactionActivity : AppCompatActivity() {
      lateinit var callingDisplayFunction:CategoryHelper
     lateinit var bindin : ActivityTransactionBinding
     lateinit var adapter:TransactionAdapter
-    var i=0
-    var e=0
     var incomeExpenselist=ArrayList<IncomeExpenseModelClass>()
+
+    var incomeAmt = 0
+    var expenseAmt = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindin= ActivityTransactionBinding.inflate(layoutInflater)
@@ -35,7 +38,22 @@ class TransactionActivity : AppCompatActivity() {
     private fun intview() {
 
         incomeExpenselist= callingDisplayFunction.displayIncomeExpenseRecord()
-         adapter=TransactionAdapter(incomeExpenselist,{
+         adapter=TransactionAdapter(total = {
+
+             var amountIncome=adapter.IncomeAmount()
+
+             var amountExpense=adapter.ExpenseAmount()
+             Log.e("TAG", "gggggg: "+amountIncome+"--"+amountExpense )
+             var amountTotal=amountIncome-amountExpense
+
+             bindin.txtIncome.setTextColor(Color.GREEN)
+             bindin.txtExpense.setTextColor(Color.RED)
+             bindin.txtTotal.setTextColor(Color.BLUE)
+             bindin.txtIncome.text=amountIncome.toString()
+             bindin.txtExpense.text=amountExpense.toString()
+             bindin.txtTotal.text= amountTotal.toString()
+
+         },incomeExpenselist,{
             var titleUpdate="Update Data"
             var iconUpdate="update"
             val transaction = Intent(this@TransactionActivity, AddIncomeExpActivity::class.java)
@@ -95,14 +113,6 @@ class TransactionActivity : AppCompatActivity() {
             startActivity(transaction)
         }
 
-//        var incomeAmt = 0
-//        var amountIncome=adapter.IncomeAmount(incomeAmt)
-//        var expenseAmt = 0
-//        var amountExpense=adapter.ExpenseAmount(expenseAmt)
-//        Log.e("TAG", "gggggg: "+amountIncome+"--"+amountExpense )
-//        var amountTotal=amountIncome-amountExpense
-//
-//        bindin.txtTotal.text= amountTotal.toString()
 
 
 

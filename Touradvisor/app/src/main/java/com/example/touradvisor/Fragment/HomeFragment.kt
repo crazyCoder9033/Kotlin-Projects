@@ -2,6 +2,7 @@ package com.example.touradvisor.Fragment
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.touradvisor.Activity.CartActivity
 import com.example.touradvisor.Activity.DisplayActivity
 import com.example.touradvisor.Adapter.ImageAdapter
@@ -50,11 +53,39 @@ lateinit var imageAdapter: ImageAdapter
         workingClass()
         addToCart()
         appDrawer()
+        userPhoto()
 
 
         Log.e("two", "topDestination: " )
         return homeBinding.root
 
+    }
+
+    private fun userPhoto() {
+
+
+        homeBinding.imgUser.setOnClickListener {
+            val newGamefragment = ProfileFragment()
+            val fragmentTransaction = requireFragmentManager().beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentDisplay, newGamefragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+
+        auth.currentUser?.let {
+            firebaseDatabase.child("user").child(it.uid).addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    var image = snapshot.child("images").value.toString()
+                    Glide.with(this@HomeFragment).load(image).into(homeBinding.imgUser)
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+        }
     }
 
     private fun appDrawer() {
@@ -77,11 +108,22 @@ lateinit var imageAdapter: ImageAdapter
         }
 
         homeBinding.loutPrivacyPolicy.setOnClickListener {
+            val url = "https://himanshuxoxo.blogspot.com/2023/06/privacy-policy.html"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
             homeBinding.AppDrawer.openDrawer(GravityCompat.START)
         }
 
         homeBinding.loutShare.setOnClickListener {
+            val a = Intent(Intent.ACTION_SEND)
+            a.type = "text/plain"
+            a.putExtra(Intent.EXTRA_SUBJECT, "Sharing URL")
+            a.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.tripadvisor.tripadvisor&hl=en-IN")
+            startActivity(Intent.createChooser(a, "Share URL"))
+
             homeBinding.AppDrawer.openDrawer(GravityCompat.START)
+
+
         }
 
         homeBinding.loutQuit.setOnClickListener {

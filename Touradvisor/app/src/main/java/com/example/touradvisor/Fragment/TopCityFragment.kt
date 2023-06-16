@@ -13,21 +13,23 @@ import com.example.touradvisor.Adapter.SuratHotelAdapter
 import com.example.touradvisor.ModelClass.SuratModelClass
 import com.example.touradvisor.databinding.FragmentTopcityfragmentBinding
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 
 class TopCityFragment : Fragment() {
 lateinit var suratFragment : FragmentTopcityfragmentBinding
     lateinit var firebaseDatabase: DatabaseReference
     lateinit var suratHotelAdapter: SuratHotelAdapter
-
+    private lateinit var auth: FirebaseAuth
     var suratDetailsList = ArrayList<SuratModelClass>()
  var position=0
-
     var pos =0
 
 
@@ -37,7 +39,7 @@ lateinit var suratFragment : FragmentTopcityfragmentBinding
     ): View? {
        suratFragment=FragmentTopcityfragmentBinding.inflate(layoutInflater,container,false)
         firebaseDatabase = FirebaseDatabase.getInstance().getReference()
-
+        auth = Firebase.auth
         tabLayout()
 
         suratFragment.imgBack.setOnClickListener {
@@ -85,7 +87,7 @@ lateinit var suratFragment : FragmentTopcityfragmentBinding
 
     fun hotel()
     {
-        val value = arguments?.getString("key").toString()
+       var   value = arguments?.getString("key").toString()
 
         firebaseDatabase.child("top").child(value).child("hotel").addValueEventListener(object :
             ValueEventListener {
@@ -98,13 +100,13 @@ lateinit var suratFragment : FragmentTopcityfragmentBinding
 
                 }
 
-                suratHotelAdapter= SuratHotelAdapter(suratDetailsList,context){
+                    suratHotelAdapter= SuratHotelAdapter(suratDetailsList,context){
                     var intent = Intent(context, AllDetailsActivity::class.java)
                     intent.putExtra("name",it.name)
                     intent.putExtra("value",value)
                     intent.putExtra("key",it.key)
-                    intent.putExtra("hotel",true)
 
+                    intent.putExtra("hotel",true)
                     startActivity(intent)
                 }
                 var manager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -133,7 +135,6 @@ lateinit var suratFragment : FragmentTopcityfragmentBinding
                     data?.let { it1 -> suratDetailsList.add(it1) }
 
                 }
-
                 suratHotelAdapter= SuratHotelAdapter(suratDetailsList,context){
                     var intent = Intent(context, AllDetailsActivity::class.java)
                     intent.putExtra("name",it.name)
@@ -190,72 +191,19 @@ lateinit var suratFragment : FragmentTopcityfragmentBinding
     }
 
 
-//    private fun hotelFragment() {
-//
-//        val value = arguments?.getString("key").toString()
-//        val args = Bundle()
-//        args.putString("key",value)
-//        val newGamefragment = CityHotelFragment()
-//        newGamefragment.setArguments(args).toString()
-//        val fragmentTransaction = requireFragmentManager().beginTransaction()
-//        fragmentTransaction.replace(R.id.suratFrameLayout, newGamefragment)
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.commit()
-//    }
-//
-//    private fun placeFragment() {
-//        val value = arguments?.getString("key").toString()
-//
-//        val args = Bundle()
-//        args.putString("key",value)
-//
-//        val newGamefragment = CityPlaceFragment()
-//        newGamefragment.setArguments(args).toString()
-//        val fragmentTransaction = requireFragmentManager().beginTransaction()
-//        fragmentTransaction.replace(R.id.suratFrameLayout, newGamefragment)
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.commit()
-//    }
-//
-//    private fun activityFragment() {
-//        val value = arguments?.getString("key").toString()
-//
-//        val args = Bundle()
-//        args.putString("key",value)
-//        val newGamefragment = CityActivityFragment()
-//        newGamefragment.setArguments(args).toString()
-//        val fragmentTransaction = requireFragmentManager().beginTransaction()
-//        fragmentTransaction.replace(R.id.suratFrameLayout, newGamefragment)
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.commit()
-//    }
 
+}
 
-//    private fun workingClass() {
-//
-//        suratFragment.txtHotels.setOnClickListener {
-//
-//            hotelFragment()
-//        }
-//
-//        suratFragment.txtPlaces.setOnClickListener {
-//            placeFragment()
-//        }
-//
-//        suratFragment.txtActivities.setOnClickListener {
-//            activityFragment()
-//        }
-//
-//        suratFragment.imgBack.setOnClickListener {
-//            val newGamefragment = HomeFragment()
-//            val fragmentTransaction = requireFragmentManager().beginTransaction()
-//            fragmentTransaction.replace(R.id.fragmentDisplay, newGamefragment)
-//            fragmentTransaction.addToBackStack(null)
-//            fragmentTransaction.commit()
-//        }
-//
-//    }
+class SaveDataModelCLass(
+    var name: String,
+    var fav: Int,
+    var key: String,
+    var amount: String,
+    var details: String,
+    var rating: String,
+    var thumbnail: String,
+    var location: String,
 
-
+) {
 
 }

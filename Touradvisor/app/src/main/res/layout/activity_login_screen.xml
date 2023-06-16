@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/light"
     tools:context=".Activity.LoginScreenActivity">
 
 
@@ -66,11 +67,13 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_10sdp">
 
         <Button
+            android:layout_gravity="center_vertical"
             android:textColor="@color/white"
             android:layout_weight="1"
             android:id="@+id/btnLogin"
@@ -80,6 +83,7 @@
             android:text="LOGIN" />
 
         <TextView
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_5sdp"
@@ -88,6 +92,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:layout_gravity="center_vertical"
             android:textColor="@color/white"
             android:layout_weight="1"
             android:id="@+id/btnCreateAccount"
@@ -105,5 +110,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@color/black" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnGoogleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
+
 
 </LinearLayout>

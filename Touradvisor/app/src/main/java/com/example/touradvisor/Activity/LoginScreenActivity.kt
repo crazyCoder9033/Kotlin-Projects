@@ -6,13 +6,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.touradvisor.databinding.ActivityLoginScreenBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginScreenActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginScreenBinding
     private lateinit var auth: FirebaseAuth
+
+    lateinit var googleSignInClient: GoogleSignInClient
     lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +33,65 @@ class LoginScreenActivity : AppCompatActivity() {
         auth = Firebase.auth
         sharedPreferences=getSharedPreferences("MySharedPref", MODE_PRIVATE)
         workingClass()
+        googleLogin()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === 100) {
+            // When request code is equal to 100 initialize task
+            val signInAccountTask: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            // check condition
+            if (signInAccountTask.isSuccessful()) {
+                // When google sign in successful initialize string
+                val s = "Google sign in successful"
+                Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+
+                try {
+                    // Initialize sign in account
+                    val googleSignInAccount: GoogleSignInAccount = signInAccountTask.getResult(
+                        ApiException::class.java)
+                    // Check condition
+                    if (googleSignInAccount != null) {
+                        // When sign in account is not equal to null initialize auth credential
+                        val authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.idToken, null)
+                        // Check credential
+                        auth.signInWithCredential(authCredential)
+                            .addOnCompleteListener(this,
+                                OnCompleteListener<AuthResult?> { task ->
+                                    if (task.isSuccessful) {
+                                        startActivity(Intent(this@LoginScreenActivity,
+                                            DashBoardActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+
+                                    } else {
+
+                                    }
+                                })
+                    }
+                } catch (e: ApiException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+
+    private fun googleLogin() {
+
+        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("665533652789-4kcuadkbf7kq1ki2d1941rq3vu28v6th.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
+
+
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
+        binding.btnGoogleLogin.setOnClickListener {
+            val intent = googleSignInClient.signInIntent
+            startActivityForResult(intent, 100)
+        }
     }
 
     private fun workingClass() {

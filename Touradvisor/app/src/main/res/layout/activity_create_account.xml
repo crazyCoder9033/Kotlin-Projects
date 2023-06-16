@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".Activity.CreateAccountActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:layout_marginTop="@dimen/_30sdp"
-        android:src="@drawable/personnnnn"
+        android:src="@drawable/add_photo"
         android:id="@+id/imgUser"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"/>
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"/>
 
 
     <TextView

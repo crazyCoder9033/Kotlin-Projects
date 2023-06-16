@@ -94,4 +94,12 @@ dependencies {
 //shapable image
     implementation 'com.google.android.material:material:1.2.0'
 
+
+    //razorpay
+    implementation 'com.razorpay:checkout:1.6.26'
+
+    //    google signin
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+
+
 }

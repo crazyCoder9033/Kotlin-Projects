@@ -15,14 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/_70sdp"
+            android:layout_width="@dimen/_80sdp"
             android:background="@drawable/profile_radius"
-            android:src="@drawable/profie"
             android:padding="@dimen/_10sdp"
             android:id="@+id/imgImage"
             android:layout_marginTop="@dimen/_135sdp"
             android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/_70sdp"/>
+            android:layout_height="@dimen/_80sdp"/>
 
         <LinearLayout
 
@@ -157,7 +156,6 @@
             android:layout_height="@dimen/_1sdp"/>
 
         <LinearLayout
-
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_below="@id/imgImage"
@@ -173,7 +171,6 @@
             <TextView
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"
-
                 android:textColor="@color/dark"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_gravity="center_vertical"

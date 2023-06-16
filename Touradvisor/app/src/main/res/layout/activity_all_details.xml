@@ -248,7 +248,7 @@
                 <FrameLayout
                     android:id="@+id/mapView"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_150sdp"/>
+                    android:layout_height="@dimen/_190sdp"/>
             </androidx.cardview.widget.CardView>
 
 

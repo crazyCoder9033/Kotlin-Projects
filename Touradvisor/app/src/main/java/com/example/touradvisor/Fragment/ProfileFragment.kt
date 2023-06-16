@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.touradvisor.Activity.DashBoardActivity
 import com.example.touradvisor.Activity.LoginScreenActivity
 import com.example.touradvisor.R
@@ -76,6 +77,7 @@ profileBinding.btnLogOut.setOnClickListener {
                     profileBinding.txtAddress.setText(address)
                     profileBinding.txtCity.setText(city)
                     profileBinding.txtEmail.setText(email)
+                   Glide.with(this@ProfileFragment).load(image).into(profileBinding.imgImage)
 
                 }
 

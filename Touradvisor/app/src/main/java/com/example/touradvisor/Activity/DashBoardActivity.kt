@@ -1,5 +1,6 @@
 package com.example.touradvisor.Activity
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -69,10 +70,13 @@ class DashBoardActivity : AppCompatActivity() {
     fun loadFragment(f : Fragment)
     {
         val fm : FragmentManager =supportFragmentManager
+
         val fragmentTransaction: FragmentTransaction =fm.beginTransaction()
+
         fragmentTransaction.replace(R.id.fragmentDisplay,f)
         fragmentTransaction.commit()
     }
+
 
 
 }

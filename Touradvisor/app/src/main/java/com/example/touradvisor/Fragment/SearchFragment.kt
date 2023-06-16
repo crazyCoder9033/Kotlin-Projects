@@ -1,13 +1,15 @@
 package com.example.touradvisor.Fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.touradvisor.Activity.AllDetailsActivity
 import com.example.touradvisor.Adapter.SuratHotelAdapter
@@ -16,10 +18,10 @@ import com.example.touradvisor.databinding.FragmentSearchBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+
 
 class SearchFragment : Fragment() {
 
@@ -34,13 +36,24 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
         searchBinding = FragmentSearchBinding.inflate(layoutInflater, container, false)
         firebaseDatabase = FirebaseDatabase.getInstance().getReference()
-        searchFeature()
+
 
         tabLayout()
         return searchBinding.root
+    }
+
+
+    fun hideKeyboard(activity: Activity) {
+        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun tabLayout() {
@@ -58,10 +71,6 @@ class SearchFragment : Fragment() {
         searchBinding.tbLayout.addTab(searchBinding.tbLayout.newTab().setText("Hotels"))
         searchBinding.tbLayout.addTab(searchBinding.tbLayout.newTab().setText("Places"))
         searchBinding.tbLayout.addTab(searchBinding.tbLayout.newTab().setText("Activity"))
-
-//
-//         adapter = TabLayoutAdapter(requireActivity().supportFragmentManager, searchBinding.tbLayout.tabCount)
-//        searchBinding.VpLayout.adapter = adapter
 
 
         searchBinding.tbLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -85,15 +94,15 @@ class SearchFragment : Fragment() {
         })
 
         Log.e("TAG", "working: " )
-//        searchBinding.VpLayout.addOnPageChangeListener(TabLayoutOnPageChangeListener(searchBinding.tbLayout))
         searchBinding.btnSearch.setOnClickListener {
+            hideKeyboard(requireActivity())
              search=searchBinding.edtSearch.text.toString()
             hotel()
         }
     }
    fun hotel()
     {
-//        searchBinding.VpLayout.currentItem = 0
+
         firebaseDatabase.child("top").child(search).child("hotel").addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -102,7 +111,6 @@ class SearchFragment : Fragment() {
                 {
                     var data = photo.getValue(SuratModelClass::class.java)
                     data?.let { it1 -> suratDetailsList.add(it1) }
-//                        data?.location=photo.child("hotelName").value.toString()
                 }
                 suratHotelAdapter= SuratHotelAdapter(suratDetailsList,context){
                     var intent = Intent(context, AllDetailsActivity::class.java)
@@ -289,5 +297,6 @@ class SearchFragment : Fragment() {
 //
 //
     }
+
 
 }

@@ -28,57 +28,25 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <LinearLayout
 
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabLayout
 
-            <TextView
-                android:background="@drawable/radius"
-                android:id="@+id/txtHotels"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:text="HOTELS"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:background="@drawable/radius"
-                android:id="@+id/txtPlaces"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:text="PLACES"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:background="@drawable/radius"
-                android:id="@+id/txtActivities"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:text="ACTIVITIES"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtAya"
+            android:background="@color/dark"
+            android:id="@+id/tbLayout"
+            app:tabIndicatorHeight="@dimen/_3sdp"
+            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rcvSearch"-->
-<!--            android:layout_marginTop="@dimen/_5sdp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvSearch"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 
 

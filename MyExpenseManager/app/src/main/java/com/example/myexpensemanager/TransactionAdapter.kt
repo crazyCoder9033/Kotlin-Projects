@@ -10,9 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myexpensemanager.ModelClass.IncomeExpenseModelClass
 
-class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClass>,var invo: ((IncomeExpenseModelClass)-> Unit),var delete: ((Int) -> Unit)) : RecyclerView.Adapter<TransactionAdapter.myAdapter>() {
+class TransactionAdapter(var total : (() -> Unit),var incomeExpenselist: ArrayList<IncomeExpenseModelClass>,var invo: ((IncomeExpenseModelClass)-> Unit),var delete: ((Int) -> Unit)) : RecyclerView.Adapter<TransactionAdapter.myAdapter>() {
    var incomeAmt=0
     var expenseAmt=0
+
+    var  totalex=0
+    var totalinc=0
     class myAdapter(view : View) :RecyclerView.ViewHolder(view){
 
         var txtIncomeExpense:TextView=view.findViewById(R.id.txtIncomeExpense)
@@ -47,17 +50,21 @@ class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClas
             incomeAmt=incomeAmt1.toInt()
             Log.e("TAG", "income: "+incomeAmt )
 
-            IncomeAmount(incomeAmt)
+
+            totalinc=totalinc+incomeAmt1.toInt()
+            Log.e("TAG", "iinnnnn: =="+totalinc )
         }
         else
         {
+
             holder.txtIncomeExpense.setBackgroundColor(Color.RED)
             var incomeExp1=holder.txtAmount.text.toString()
             expenseAmt=incomeExp1.toInt()
 
-            Log.e("TAG", "exxpppp: "+expenseAmt )
+
             Log.e("TAG", "red: "+holder.txtIncomeExpense.text.toString() )
-            ExpenseAmount(expenseAmt)
+            totalex=totalex+incomeExp1.toInt()
+            Log.e("TAG", "exxpppp: "+totalex )
         }
         holder.txtNote.setText(incomeExpenselist[position].note)
 
@@ -67,6 +74,10 @@ class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClas
         holder.imgDelete.setOnClickListener {
             delete.invoke(incomeExpenselist[position].id)
             Log.e("TAG", "delete ")
+        }
+        if(position == incomeExpenselist.size-1)
+        {
+            total.invoke()
         }
     }
     override fun getItemCount(): Int {
@@ -80,19 +91,19 @@ class TransactionAdapter(var incomeExpenselist: ArrayList<IncomeExpenseModelClas
     }
 
 
-    fun IncomeAmount(incomeAmt: Int): Int {
+    fun IncomeAmount(): Int {
 
 //            var incomeAmount=incomeAmt
 
-//        Log.e("TAG", "IncomeAmount: "+incomeAmount)
-        return incomeAmt
+        Log.e("TAG", "IncomeAmount: "+totalinc)
+        return totalinc
     }
 
-    fun ExpenseAmount(expenseAmt: Int): Int {
+    fun ExpenseAmount(): Int {
+
+        Log.e("TAG", "exxx: "+totalinc)
 
 
-
-
-        return expenseAmt
+        return totalex
     }
 }
