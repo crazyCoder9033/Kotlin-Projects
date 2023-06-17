@@ -47,8 +47,8 @@ class TransactionAdapter(var total : (() -> Unit),var incomeExpenselist: ArrayLi
             Log.e("TAG", "green: "+holder.txtIncomeExpense.text.toString() )
 
              var incomeAmt1=holder.txtAmount.text.toString()
-            incomeAmt=incomeAmt1.toInt()
-            Log.e("TAG", "income: "+incomeAmt )
+//            incomeAmt=incomeAmt1.toInt()
+//            Log.e("TAG", "income: "+incomeAmt )
 
 
             totalinc=totalinc+incomeAmt1.toInt()

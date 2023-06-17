@@ -1,15 +1,18 @@
 package com.example.touradvisor.Activity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Notification
+import android.app.NotificationManager
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.touradvisor.R
 import com.example.touradvisor.databinding.ActivityCartBinding
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
 import org.json.JSONException
 import org.json.JSONObject
+
 
 class CartActivity : AppCompatActivity(), PaymentResultListener  {
     lateinit var binding: ActivityCartBinding
@@ -26,7 +29,6 @@ class CartActivity : AppCompatActivity(), PaymentResultListener  {
         binding.imgBack.setOnClickListener {
             onBackPressed()
         }
-
 
         binding.btnPay.setOnClickListener {
 
@@ -77,6 +79,7 @@ var price = 4399
 
     override fun onPaymentSuccess(p0: String?) {
         Toast.makeText(this, "Payment is successful", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {

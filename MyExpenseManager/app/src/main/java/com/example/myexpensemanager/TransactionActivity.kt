@@ -23,8 +23,7 @@ class TransactionActivity : AppCompatActivity() {
     lateinit var adapter:TransactionAdapter
     var incomeExpenselist=ArrayList<IncomeExpenseModelClass>()
 
-    var incomeAmt = 0
-    var expenseAmt = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

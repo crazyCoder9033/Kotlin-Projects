@@ -35,7 +35,7 @@ class SuratHotelAdapter(
         var thumbnail : ImageView=view.findViewById(R.id.imgThumbnail)
         var name : TextView=view.findViewById(R.id.txtName)
         var cvHotel: CardView=view.findViewById(R.id.cvHotel)
-        var imgLiked :ImageView=view.findViewById(R.id.imgLiked)
+//        var imgLiked :ImageView=view.findViewById(R.id.imgLiked)
 
     }
 
@@ -63,14 +63,14 @@ class SuratHotelAdapter(
 
         }
 
-        if (suratDetailsList[position].fav==1)
-        {
-            holder.imgLiked.setImageResource(R.drawable.user)
-        }
-
-        else{
-            holder.imgLiked.setColorFilter(R.drawable.hearttt)
-        }
+//        if (suratDetailsList[position].fav==1)
+//        {
+//            holder.imgLiked.setImageResource(R.drawable.user)
+//        }
+//
+//        else{
+//            holder.imgLiked.setColorFilter(R.drawable.hearttt)
+//        }
 
 
 

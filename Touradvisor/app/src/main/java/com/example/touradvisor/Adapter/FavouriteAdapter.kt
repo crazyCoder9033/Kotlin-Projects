@@ -25,7 +25,7 @@ class FavouriteAdapter(var  context: Context?,var liked:((Int , String) -> Unit)
         var thumbnail : ImageView =view.findViewById(R.id.imgThumbnail)
         var name : TextView =view.findViewById(R.id.txtName)
         var cvHotel: CardView =view.findViewById(R.id.cvHotel)
-        var imgLiked : ImageView =view.findViewById(R.id.imgLiked)
+//        var imgLiked : ImageView =view.findViewById(R.id.imgLiked)
 
     }
 
@@ -51,28 +51,28 @@ class FavouriteAdapter(var  context: Context?,var liked:((Int , String) -> Unit)
 
         }
 
-            holder.imgLiked.setImageResource(R.drawable.user)
+//            holder.imgLiked.setImageResource(R.drawable.user)
 
 
 
+//
+//        holder.imgLiked.setOnClickListener {
+//            if(suratDetailsList[position].fav==1)
+//            {
+//                liked.invoke(0,suratDetailsList[position].key)
+//                holder.imgLiked.setImageResource(R.drawable.hearttt)
+//                suratDetailsList[position].fav=0
+//            }
+//
+//            else
+//            {
+//                liked.invoke(1,suratDetailsList[position].key)
+//                holder.imgLiked.setImageResource(R.drawable.user)
+//                suratDetailsList[position].fav=1
+//            }
 
-        holder.imgLiked.setOnClickListener {
-            if(suratDetailsList[position].fav==1)
-            {
-                liked.invoke(0,suratDetailsList[position].key)
-                holder.imgLiked.setImageResource(R.drawable.hearttt)
-                suratDetailsList[position].fav=0
-            }
 
-            else
-            {
-                liked.invoke(1,suratDetailsList[position].key)
-                holder.imgLiked.setImageResource(R.drawable.user)
-                suratDetailsList[position].fav=1
-            }
-
-
-        }
+//        }
     }
 
     fun updateList(suratDetailsList: ArrayList<SuratModelClass>) {
