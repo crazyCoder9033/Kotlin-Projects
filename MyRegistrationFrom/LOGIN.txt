@@ -1,0 +1,62 @@
+   private fun initview() {
+
+//SQLITE LOGIN CHECK
+        binding.btnLogin.setOnClickListener {
+
+            var name=binding.edtName.text.toString()
+            var age=binding.edtAge.text.toString()
+
+
+            var check= db.login(name,age)
+
+
+            if (check)
+            {
+                Toast.makeText(this, "login succes", Toast.LENGTH_SHORT).show()
+                var intent=Intent(this,MainActivity::class.java)
+                startActivity(intent)
+            }
+
+            else{
+                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+
+
+        binding.btnCreate.setOnClickListener {
+
+            var intent=Intent(this,AddFormActivity::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+
+
+
+database//
+
+   var table="create table userDetailsTb(id_no integer primary key Autoincrement,fullName text,age text, gender text, address text , mobile text)"
+
+
+
+
+ fun login(name: String, age: String): Boolean {
+        val update = writableDatabase
+
+        var table = "select * from userDetailsTb where fullName='$name' and age='$age' "
+
+        var cursor=update.rawQuery(table,null)
+
+        if (cursor.count<=0) {
+            cursor.close()
+            return false
+        }
+        return true
+    }
+
+
+
+
