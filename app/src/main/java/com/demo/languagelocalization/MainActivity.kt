@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
+
     fun updateResources(code: String) {
         val locale = Locale(code)
         Locale.setDefault(locale)
